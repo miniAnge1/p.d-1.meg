@@ -55,6 +55,60 @@
   this.reset();
     });
 </script>
+    <script>
+        // Array to store search history
+        let searchHistory = [];
+
+        // Function to handle the search
+        function search() {
+            const query = document.getElementById('searchInput').value;
+            const resultsDiv = document.getElementById('results');
+            const historyDiv = document.getElementById('history');
+
+            // Validate the input
+            if (query.trim() === '') {
+                alert('Please enter a search term.');
+                return;
+            }
+
+            // Display the search results
+            resultsDiv.innerHTML = `<p>Search results for: <strong>${query}</strong></p>`;
+            searchHistory.push(query); // Add to history
+
+            // Update the search history display
+            updateHistory();
+        }
+
+        // Function to update the history display
+        function updateHistory() {
+            const historyDiv = document.getElementById('history');
+            historyDiv.innerHTML = '<h3>Search History:</h3>'; // Clear previous history
+            searchHistory.forEach((item, index) => {
+                historyDiv.innerHTML += `<p>${index + 1}: ${item}</p>`;
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Search Page</h1>
+    </header>
+
+    <main>
+        <input type="text" id="searchInput" placeholder="Enter your search term...">
+        <button onclick="search()">Search</button>
+
+        <div id="results"></div>
+        <div id="history"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Search Page</p>
+    </footer>
+
+</body>
+</html>
 
 
     </form>
