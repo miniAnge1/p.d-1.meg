@@ -38,12 +38,11 @@
             recipeDiv.innerHTML = `<h2>${recepieName}; </h2>
             
         <h3>ingredients:</h3>
-    <ul>
 
-    {ingredients.map(ingredients=>`<li>$
-    {ingredient.trim()}</li>`).join('')}
-    
-    </ul>
+    <ul>
+    ${ingredients.map(ingredient => `<li>${ingredient.trim()}</li>`).join('')}
+</ul>
+
             <h3>Pagatavošana:</h3>
             <p>${instructions}</p>`;
 
