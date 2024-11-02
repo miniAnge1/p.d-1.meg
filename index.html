@@ -30,20 +30,24 @@
         event.preventDefault();
 
         const recepieName = document.getElementById('recipeName').value;
-        const ingredients = documents.getElementById('ingridients').value.split(',')
-        const instructions = documents.getElementById('instructions').value;
+        const ingredients = document.getElementById('ingridients').value.split(',')
+        const instructions = document.getElementById('instructions').value;
 
-        const recipeDiv = document.creatElement('div');
+        const recipeDiv = document.createElement('div');
             recipeDiv.className = 'recipe';
             recipeDiv.innerHTML = `<h2>${recepieName}; </h2>
             
         <h3>ingredients:</h3>
+    <ul>
+
     {ingredients.map(ingredients=>`<li>$
-    {ingredient.trim()} </li>`).join(")}</ul>
+    {ingredient.trim()} </li>`).join('')}
+    
+    </ul>
             <h3>Pagatavošana:</h3>
             <p>${instructions}</p>`;
 
-  document.getElementById('recipesContainer').appendChild(reciprDiv);
+  document.getElementById('recipesContainer').appendChild(recipeDiv);
 
   //Notīrīt formu
   this.reset();
