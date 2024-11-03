@@ -1,0 +1,42 @@
+<body>
+    <h1>Receptes apkopojums</h1> 
+
+    <div class="form-container">
+        <h2>Pievienot jaunu recepti</h2>
+        <form id="recipeForm">
+            <label for="recipeName">Receptes nosaukums:</label> <br>
+            <input type="text" id="recipeName" required> <br>
+            <label for="ingredients">Sastāvdaļas (atdalīts ar komatiem):</label> <br>
+            <input type="text" id="ingredients" required> <br>
+            <label for="instructions">Pagatavošana:</label> <br>
+            <textarea id="instructions" required></textarea> <br>
+            <button type="submit">Pievienot</button>
+        </form>
+    </div>
+    <div id="recipesContainer"></div>
+
+    <script>
+        document.getElementById('recipeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const recepieName = document.getElementById('recipeName').value;
+            const ingredients = document.getElementById('ingredients').value;
+            const instructions = document.getElementById('instructions').value;
+
+            const ingredientsList = ingredients.split(',').map(ingredient => `<li>${ingredient.trim()}</li>`).join('');
+
+            const recipeDiv = document.createElement('div');
+            recipeDiv.className = 'recipe';
+            recipeDiv.innerHTML = `<h2>${recepieName};</h2>
+                <h3>Sastāvdaļas:</h3>
+                <ul>${ingredientsList}</ul>
+                <h3>Pagatavošana:</h3>
+                <p>${instructions}</p>`;
+
+            document.getElementById('recipesContainer').appendChild(recipeDiv);
+
+            // Notīrīt formu
+            this.reset();
+        });
+    </script>
+</body>
